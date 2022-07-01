@@ -1,0 +1,61 @@
+﻿@page
+@model Electric_Prices.Pages.IndexModel;
+@using Electric_Prices.Services
+@using Electric_Prices.Models
+@inject RetrieveData RetrieveData
+@{
+    ViewData["Title"] = "Home page";
+    
+}
+<form class="form-horizontal" method="post">
+    
+    <div class="form-group">
+        <label for="Hourly_Time_Input" class="col-sm-2 control-label">Price of electricity (per hour) </label>
+        <div class="col-sm-10">
+            <input type="datetime-local" class="form-control" name="Hourly_Time_Input">
+        </div>
+    </div>
+    <div>
+    <p>Price per our at @ViewData["PricePerHour_Date"] is <b>@ViewData["PricePerHour_Price"] </b></p>
+    </div>
+    <div class="form-group">
+        <div class="col-sm-offset-2 col-sm-10">
+            <button asp-page-handler="SubmitTimePrice" method="post">Submit</button>
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="Daily_Time_Input_01" class="col-sm-2 control-label">Average daily price for electricity. <br /> <b>Start Date:</b> </label>
+        <div class="col-sm-10">
+            <input type="datetime-local" class="form-control" name="Daily_Time_Input_01">
+        </div>
+    </div>
+        <div class="form-group">
+        <label for="Daily_Time_Input_02" class="col-sm-2 control-label"> <b>End Date:</b></label>
+        <div class="col-sm-10">
+            <input type="datetime-local" class="form-control" name="Daily_Time_Input_02">
+        </div>
+    </div>
+        <div>
+    <p>Average Daily Price is <b>@ViewData["Daily_Price"] </b></p>
+    </div>
+    <div class="form-group">
+        <div class="col-sm-offset-2 col-sm-10">
+            <button asp-page-handler="SubmitDailyPrice" method="post">Submit</button>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <div class="col-sm-offset-2 col-sm-10">
+            <button asp-page-handler="RefreshData" method="post">Get Recent Data from API</button>
+        </div>
+    </div>
+</form>
+
+<a asp-page="./Table/Index" >Table</a>
+
+@functions
+{
+    
+}
+
+
