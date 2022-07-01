@@ -111,23 +111,15 @@ public class IndexModel : PageModel
                 DateTime item_date = raw_item_date.Date + ts_item;
 
 
-                Console.WriteLine("item_date = " + item_date);
-                Console.WriteLine("st_item = " + st_item);
-
                 if (DateTime.Compare(item_date, DT_input_date_1) >= 0 && DateTime.Compare(item_date, DT_input_date_2) <= 0)
                 {
-                    Console.WriteLine("Found appropriate date");
+
                     overall_price += item.Price;
                     days_num++;
                     daily_price = overall_price / days_num;
 
                 }
             }
-            Console.WriteLine("daily_price = " + daily_price);
-            Console.WriteLine("overall_price = " + overall_price);
-            Console.WriteLine("days_num = " + days_num);
-            Console.WriteLine("DT_input_date_1 = " + DT_input_date_1);
-            Console.WriteLine("DT_input_date_2= " + DT_input_date_2);
 
             ViewData["Daily_Price"] = Math.Round(daily_price, 2);
 

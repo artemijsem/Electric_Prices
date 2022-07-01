@@ -51,10 +51,6 @@ namespace Electric_Prices.Models
                 entity.Property(e => e.Timestamp).HasColumnName("timestamp");
             });
             
-            modelBuilder.Entity<Local_Model>(entity =>
-            {
-                entity.Property(e => e.Date);
-            });
             
 
             OnModelCreatingPartial(modelBuilder);
